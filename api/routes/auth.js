@@ -1,14 +1,21 @@
 const router = require("express").Router();
 const USer = require("../models/User");
 const User = require("../models/User");
+const bcrypt = require('bcrypt');
+
 
 //Register
+
 router.post("/register", async (req,res) => {
     try{
+
+        const salt = await bcrypt.genSalt(10);
+        const hashedPass = await bcrypt.hash(req.body.password, salt);
+
         const newUSer = new User({
             username: req.body.username,
             email: req.body.email,
-            password: req.body.password,
+            password: hashedPass,
 
         });
 
@@ -23,3 +30,5 @@ router.post("/register", async (req,res) => {
 
 
 //Login
+
+module.exports = router;
