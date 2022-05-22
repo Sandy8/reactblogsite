@@ -5,8 +5,8 @@ const bcrypt = require('bcrypt');
 
 //Register
 
-router.post("/register", async (req,res) => {
-    try{
+router.post("/register", async (req, res) => {
+    try {
 
         const salt = await bcrypt.genSalt(10);
         const hashedPass = await bcrypt.hash(req.body.password, salt);
@@ -21,7 +21,7 @@ router.post("/register", async (req,res) => {
         const user = await newUSer.save();
         res.status(200).json(user);
 
-    } catch(err){
+    } catch (err) {
         res.status(500).json(err);
     }
 })
@@ -30,16 +30,16 @@ router.post("/register", async (req,res) => {
 
 //Login
 router.post("/login", async (req, res) => {
-    try{
-        const user = await User.findOne({username: req.body.username})
+    try {
+        const user = await User.findOne({ username: req.body.username })
         !user && res.status(400).json("Wrong credentials!")
 
         const validated = await bcrypt.compare(req.body.password, user.password)
         !validated && res.status(400).json("Wrong credentials!")
 
-        const {password, ...others} = user._doc;
+        const { password, ...others } = user._doc;
         res.status(200).json(others)
-    }catch(err){
+    } catch (err) {
         res.status(500).json(err);
     }
 })

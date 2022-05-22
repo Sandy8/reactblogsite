@@ -80,8 +80,10 @@ router.get("/" , async (req, res) => {
                 $in:[catName]
             }})
         } else {
-            posts = await Post
+
+            posts = await Post.find();
         }
+        res.status(200).json(posts);
     } catch (err) {
         res.status(500).json(err);
     }
