@@ -1,6 +1,6 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
-const PostSchema = new mongoose.Schema(
+const CategorySchema = new mongoose.Schema(
     {
        name: {
            type:String,
@@ -10,5 +10,5 @@ const PostSchema = new mongoose.Schema(
     {timestamps:true}
 );
 
-module.exports = mongoose.model("Post", UserSchema);
+module.exports = mongoose.model("Category", CategorySchema);
 
