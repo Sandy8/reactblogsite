@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const authRoute = require("./routes/auth");
 const userRoute = require("./routes/users");
 const postRoute = require("./routes/posts");
+const categoryRoute = require("./routes/categories");
 
 dotenv.config();
 app.use(express.json());
@@ -17,10 +18,10 @@ mongoose
   }).then(console.log("Connected to Mongoose"))
   .catch((err) => console.log(err));
 
-app.use("/api/auth", authRoute);
-app.use("/api/users", userRoute);
-app.use("/api/posts", postRoute);
-
-app.listen("5001", () => {
-  console.log("Port:5001 Backend is running");
-});
+    app.use("/api/auth" , authRoute);
+    app.use("/api/users" , userRoute);
+    app.use("/api/posts" , postRoute);
+    app.use("/api/categories" , categoryRoute);
+ app.listen("5001", ()=> {
+     console.log("Port:5001 Backend is running");
+ });
