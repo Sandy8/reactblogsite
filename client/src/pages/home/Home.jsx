@@ -5,7 +5,7 @@ import Posts from "../../components/posts/Posts";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./home.css";
 
-export default function home() {
+export default function Home() {
   return (
     <div>
     <Header />
