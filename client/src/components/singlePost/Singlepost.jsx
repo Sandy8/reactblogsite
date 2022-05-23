@@ -1,12 +1,13 @@
 import React from 'react';
 
-import "./singlepost.css"
+import "./singlepost.css";
+import postImage from "./images/p259756.jpg";
 
 export default function Singlepost() {
   return (
     <div className="singlepost">
        <div className="singlepostWrap">
-           <img src="images/p259756.jpg" alt="" className="singlepostImg" />
+           <img src={postImage} alt="" className="singlepostImg" />
             <h1 className="singlepostTitle">
             Lorem ipsum dolor sit amet
             <div className="singlepostEdit">
