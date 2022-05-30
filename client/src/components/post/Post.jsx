@@ -1,31 +1,39 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+import "./post.css";
 
-import "./post.css"
-
-export default function Post() {
+export default function Post({ post }) {
   return (
     <div className="post">
-      <img src="images/p2228503.jpg" alt="" className="postImage" />
+      {post.photo && (
+        <img src={post.photo} alt="" className="postImage" />
+      )}
+
       <div className="postInfo">
-          <div className="postCats">
-              <span className="postcat">
-                  Music
-              </span>
-              <span className="postcat">
-                  Life
-              </span>
-          </div>
-          <span className="postTitle">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        <div className="postCats">
+          {
+          post.categories.map(c=> (
+          <span className="postcat">
+            {c.name}
           </span>
-          <hr />
-          <span className="postDate">
-              1 hour ago
+          ))}
+          <span className="postcat">
+            Life
           </span>
-          <p className="postDesc">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tincidunt suscipit neque a venenatis. In non molestie magna. Proin ut tellus tortor. Nunc dignissim euismod ornare. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tincidunt suscipit neque a venenatis. In non molestie magna. Proin ut tellus tortor. Nunc dignissim euismod ornare. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-          </p>
+        </div>
+        <Link to={`/post/${post._id}`} className='link' > 
+        <span className="postTitle">
+          {post.title}
+        </span>
+        </Link>
+        
+        <hr />
+        <span className="postDate">
+          {new Date(post.createdAt).toDateString()}
+        </span>
+        <p className="postDesc">
+          {post.desc}
+        </p>
       </div>
     </div>
   )

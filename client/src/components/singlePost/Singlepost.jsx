@@ -1,13 +1,15 @@
 import React from 'react';
 
 import "./singlepost.css";
-import postImage from "./images/p259756.jpg";
+import { useLocation } from 'react-router-dom';
 
 export default function Singlepost() {
+    const location = useLocation();
+    console.log(location)
   return (
     <div className="singlepost">
        <div className="singlepostWrap">
-           <img src={postImage} alt="" className="singlepostImg" />
+           <img src='images/p259756.jpg' alt="" className="singlepostImg" />
             <h1 className="singlepostTitle">
             Lorem ipsum dolor sit amet
             <div className="singlepostEdit">
